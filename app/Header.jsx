@@ -10,6 +10,7 @@ export default function Header() {
         <h1 className="text-3xl font-medium">
           <a href="#hero">🚀 Acme Rockets</a>
         </h1>
+
         <div>
           <button id="hamburger-button" className="relative h-8 w-8 cursor-pointer text-3xl md:hidden" onClick={() => setOpen(!open)}>
             {/* <!-- &#9776; --> */}
@@ -21,7 +22,7 @@ export default function Header() {
           <nav className="hidden space-x-8 text-xl md:block" aria-label="main">
             <a href="#rockets" className="hover:opacity-90">Our Rockets</a>
             <a href="#testimonios" className="hover:opacity-90">Testimonios</a>
-            <a href="#contactar" className="hover:opacity-90">Contactar</a>
+            <a href='#contactar' className="hover:opacity-90">Contactar</a>
           </nav>
         </div>
       </section>
@@ -35,6 +36,7 @@ export default function Header() {
           <a href="#contactar" className="w-full py-6 text-center hover:opacity-90">Contactar</a>
           <a href="#footer" className="w-full py-6 text-center hover:opacity-90">Legal</a>
         </nav>
+
       </section>
     </header>
 
