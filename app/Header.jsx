@@ -1,9 +1,18 @@
 "use client"
 import React, { useState } from "react";
 import Link from "next/link";
+import { menuLinks } from "./lib/data"
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+
+  // const menuLinks = [
+  //   { name: "Our Rockets", link: "#rockets" },
+  //   { name: "Testimonios", link: "#testimonios" },
+  //   { name: "Contactar", link: "#contactar" },
+  // ];
+
+
   return (
     <header className="sticky top-0 z-10 bg-teal-700 text-white">
       <section className="mx-auto flex max-w-4xl items-center justify-between p-4">
@@ -20,24 +29,33 @@ export default function Header() {
             </div>
           </button>
           <nav className="hidden space-x-8 text-xl md:block" aria-label="main">
-            <a href="#rockets" className="hover:opacity-90">Our Rockets</a>
-            <a href="#testimonios" className="hover:opacity-90">Testimonios</a>
-            <a href='#contactar' className="hover:opacity-90">Contactar</a>
+            {menuLinks?.map((menu, i) => (
+              <a key={i} href={menu?.link} className="hover:opacity-90">{menu?.name}</a>
+            ))}
           </nav>
         </div>
       </section>
       <section id="mobile-menu"
-        className="top-68 justify-content-center absolute hidden w-full origin-top animate-open-menu flex-col bg-black text-5xl ">
+        className={`top-68 justify-content-center absolute  w-full origin-top animate-open-menu flex-col bg-teal-700 text-5xl  ${open ? "block" : "hidden"}`}>
+
 
         <nav className="flex min-h-screen flex-col items-center py-8" aria-label="mobile">
-          <a href="#hero" className="w-full py-6 text-center hover:opacity-90">Home</a>
+          {/* <a href="#hero" className="w-full py-6 text-center hover:opacity-90">Home</a>
           <a href="#rockets" className="w-full py-6 text-center hover:opacity-90">Our Rockets</a>
           <a href="#testimonios" className="w-full py-6 text-center hover:opacity-90">Testimonios</a>
           <a href="#contactar" className="w-full py-6 text-center hover:opacity-90">Contactar</a>
-          <a href="#footer" className="w-full py-6 text-center hover:opacity-90">Legal</a>
+          <a href="#footer" className="w-full py-6 text-center hover:opacity-90">Legal</a> */}
+          {menuLinks?.map((menu, i) => (
+            <a
+              key={i}
+              href={menu?.link}
+              onClick={() => setOpen(false)}
+              className="w-full py-6 text-center hover:opacity-90">{menu?.name}</a>
+          ))}
         </nav>
 
       </section>
+      {open && <h1>Menu abierto</h1>}
     </header>
 
   );

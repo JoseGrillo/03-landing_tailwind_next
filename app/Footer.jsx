@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { menuLinks } from "./lib/data"
 
 export default function Footer() {
 
@@ -15,9 +16,9 @@ export default function Footer() {
           Phone: <a href="tel:+15555555555">(555) 555-5555</a>
         </address>
         <nav className="hidden flex-col gap-2 md:flex" aria-label="footer">
-          <a href="#rockets" className="hover:opacity-90">Our Rockets</a>
-          <a href="#testimonials" className="hover:opacity-90">Testimonials</a>
-          <a href="#contact" className="hover:opacity-90">Contact Us</a>
+          {menuLinks?.map((menu, i) => (
+            <a key={i} href={menu?.link} className="hover:opacity-90">{menu?.name}</a>
+          ))}
         </nav>
         <div className="flex flex-col sm:gap-2">
           <p className="text-right">Copyright &copy; <span id="year">2022</span></p>
