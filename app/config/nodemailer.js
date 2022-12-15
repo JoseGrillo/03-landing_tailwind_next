@@ -6,7 +6,10 @@ const email = process.env.EMAIL;
 const pass = process.env.EMAIL_PASS;
 console.log("el email y pass2222", email, pass)
 export const transporter = nodemailer.createTransport({
-  service: "gmail",
+  //service: "gmail",
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true, // use SSL
   auth: {
     user: email,
     pass,

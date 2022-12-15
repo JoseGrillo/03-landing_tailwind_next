@@ -2,6 +2,7 @@
 import React from 'react'
 import { useState } from "react";
 import { sendContactForm } from "./../lib/api"
+import Swal from 'sweetalert2'
 
 const initValues = { nombre: "", email: "", subject: "", message: "" };
 const initState = { isLoading: false, error: "", values: initValues };
@@ -34,18 +35,15 @@ const Contactar = () => {
       await sendContactForm(values);
       setTouched({});
       setState(initState);
-      // toast({
-      //   title: "Message sent.",
-      //   status: "success",
-      //   duration: 2000,
-      //   position: "top",
-      // });
-      alert({
-        title: "Mensaje Enviado.",
-        status: "success",
-        duration: 2000,
-        position: "top",
+
+      Swal.fire({
+        //position: 'top-end',
+        icon: 'success',
+        title: 'Mensaje Enviado con exito!!!',
+        showConfirmButton: true,
+        timer: 3500
       })
+
     } catch (error) {
       setState((prev) => ({
         ...prev,
